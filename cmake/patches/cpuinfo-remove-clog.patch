@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e2d7d53..d669307 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -245,21 +245,6 @@ ELSE()
+   TARGET_COMPILE_DEFINITIONS(cpuinfo INTERFACE CPUINFO_SUPPORTED_PLATFORM=0)
+ ENDIF()
+ 
+-# ---[ cpuinfo dependencies: clog
+-IF(NOT DEFINED CLOG_SOURCE_DIR)
+-  SET(CLOG_SOURCE_DIR "${PROJECT_SOURCE_DIR}/deps/clog")
+-ENDIF()
+-IF(NOT TARGET clog)
+-  SET(CLOG_BUILD_TESTS OFF CACHE BOOL "")
+-  SET(CLOG_RUNTIME_TYPE "${CPUINFO_RUNTIME_TYPE}" CACHE STRING "")
+-  ADD_SUBDIRECTORY(
+-    "${CLOG_SOURCE_DIR}")
+-  # We build static version of clog but a dynamic library may indirectly depend on it
+-  SET_PROPERTY(TARGET clog PROPERTY POSITION_INDEPENDENT_CODE ON)
+-ENDIF()
+-TARGET_LINK_LIBRARIES(cpuinfo PRIVATE clog)
+-TARGET_LINK_LIBRARIES(cpuinfo_internals PRIVATE clog)
+-
+ INSTALL(TARGETS cpuinfo
+   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}

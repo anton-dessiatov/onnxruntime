@@ -275,9 +275,9 @@ void CPUIDInfo::ArmAppleInit() {
     is_hybrid_ = cpuinfo_get_uarchs_count() > 1;
     has_arm_neon_dot_ = cpuinfo_has_arm_neon_dot();
     has_fp16_ = cpuinfo_has_arm_neon_fp16_arith();
-    has_arm_neon_i8mm_ = cpuinfo_has_arm_i8mm();
-    has_arm_sve_i8mm_ = cpuinfo_has_arm_sve() && cpuinfo_has_arm_i8mm();
-    has_arm_neon_bf16_ = cpuinfo_has_arm_neon_bf16();
+    has_arm_neon_i8mm_ = false; // cpuinfo_has_arm_i8mm();
+    has_arm_sve_i8mm_ = false; // cpuinfo_has_arm_sve() && cpuinfo_has_arm_i8mm();
+    has_arm_neon_bf16_ = false; //= cpuinfo_has_arm_neon_bf16();
 
     // Note: We leave is_armv8_narrow_ld_ unset because it only applies to a limited set of uarchs that we don't expect
     // to encounter on Apple platforms.

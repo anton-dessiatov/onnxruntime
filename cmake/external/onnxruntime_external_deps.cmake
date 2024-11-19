@@ -346,6 +346,7 @@ if (CPUINFO_SUPPORTED)
         pytorch_cpuinfo
         URL ${DEP_URL_pytorch_cpuinfo}
         URL_HASH SHA1=${DEP_SHA1_pytorch_cpuinfo}
+        PATCH_COMMAND ${Patch_EXECUTABLE} -p1 < ${PROJECT_SOURCE_DIR}/patches/cpuinfo-remove-clog.patch
         FIND_PACKAGE_ARGS NAMES cpuinfo
       )
   endif()
@@ -398,6 +399,8 @@ onnxruntime_fetchcontent_makeavailable(utf8_range)
 include_directories(${utf8_range_SOURCE_DIR})
 
 onnxruntime_fetchcontent_makeavailable(Protobuf nlohmann_json mp11 re2 GSL flatbuffers ${ONNXRUNTIME_CPUINFO_PROJ} ${ONNXRUNTIME_CLOG_PROJ})
+# message(FATAL_ERROR "Clog: ${pytorch_clog_SOURCE_DIR}")
+target_include_directories(cpuinfo PRIVATE ${pytorch_clog_SOURCE_DIR}/deps/clog/include)
 if(NOT flatbuffers_FOUND)
   if(NOT TARGET flatbuffers::flatbuffers)
     add_library(flatbuffers::flatbuffers ALIAS flatbuffers)

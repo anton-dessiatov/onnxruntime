@@ -211,8 +211,8 @@ if (RISCV64 OR ARM64 OR ARM OR X86 OR X64 OR X86_64)
     # Using it mainly in ARM with Android.
     # Its functionality in detecting x86 cpu features are lacking, so is support for Windows.
     if (CPUINFO_SUPPORTED)
-      onnxruntime_add_include_to_target(onnxruntime_common cpuinfo::cpuinfo)
-      list(APPEND onnxruntime_EXTERNAL_LIBRARIES cpuinfo::cpuinfo ${ONNXRUNTIME_CLOG_TARGET_NAME})
+      onnxruntime_add_include_to_target(onnxruntime_common cpuinfo)
+      list(APPEND onnxruntime_EXTERNAL_LIBRARIES cpuinfo ${ONNXRUNTIME_CLOG_TARGET_NAME})
     endif()
 endif()
 
