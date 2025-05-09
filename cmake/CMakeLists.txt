@@ -16,6 +16,8 @@ cmake_policy(SET CMP0104 OLD)
 # Enable Hot Reload for MSVC compilers if supported.
 cmake_policy(SET CMP0141 NEW)
 
+set(CMAKE_POLICY_VERSION_MINIMUM "3.5")
+
 # Project
 project(onnxruntime C CXX ASM)
 

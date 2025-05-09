@@ -12,6 +12,7 @@
         "base": [
             "--parallel",
             "--use_xcode",
+            "--use_coreml",
             "--build_apple_framework",
             "--skip_tests",
             "--cmake_extra_defines=onnxruntime_BUILD_UNIT_TESTS=OFF"
